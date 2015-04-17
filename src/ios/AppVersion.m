@@ -20,4 +20,17 @@
     [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
 }
 
+- (void)getVersionCode:(CDVInvokedUrlCommand*)command
+{
+    NSDictionary* infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    NSString* build = infoDictionary[(NSString*)kCFBundleVersionKey];
+
+    if (build == nil) {
+      NSLog(@"kCFBundleVersionKey was nil");
+    }
+
+    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:build];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:callbackId];
+}
+
 @end
