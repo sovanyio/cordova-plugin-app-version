@@ -22,6 +22,7 @@
 
 - (void)getVersionCode:(CDVInvokedUrlCommand*)command
 {
+    NSString* callbackId = command.callbackId;
     NSDictionary* infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString* build = infoDictionary[(NSString*)kCFBundleVersionKey];
 
